@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 8 - Пуск</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+        
+        body {
+            background-color: #1d1d1d;
+            color: white;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+        
+        .start-screen {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tile {
+            background-color: #0078d7;
+            border-radius: 5px;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tile:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        
+        .tile.wide {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+        
+        .tile.large {
+            grid-column: span 2;
+            grid-row: span 2;
+            aspect-ratio: 1/1;
+        }
+        
+        .tile-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .tile-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Разные цвета плиток */
+        .tile:nth-child(2n) {
+            background-color: #107c10;
+        }
+        
+        .tile:nth-child(3n) {
+            background-color: #d83b01;
+        }
+        
+        .tile:nth-child(4n) {
+            background-color: #0078d7;
+        }
+        
+        .tile:nth-child(5n) {
+            background-color: #8661c5;
+        }
+        
+        .tile:nth-child(6n) {
+            background-color: #00b7c3;
+        }
+        
+        .tile:nth-child(7n) {
+            background-color: #f2c811;
+        }
+        
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(30, 30, 30, 0.9);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .start-button {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .time {
+            margin-left: auto;
+            font-size: 14px;
+        }
+        
+        .app-icons {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+        
+        .app-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .search-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: white;
+            width: 200px;
+            margin-left: 20px;
+        }
+        
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .user-tile {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #0078d7;
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="start-screen">
+        <!-- Приложения Microsoft -->
+        <div class="tile large">
+            <div class="tile-icon">📧</div>
+            <div class="tile-title">Почта</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🌐</div>
+            <div class="tile-title">Internet Explorer</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📷</div>
+            <div class="tile-title">Камера</div>
+        </div>
+        <div class="tile wide">
+            <div class="tile-icon">📺</div>
+            <div class="tile-title">Видео</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🖼️</div>
+            <div class="tile-title">Фотографии</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🎵</div>
+            <div class="tile-title">Музыка</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🗺️</div>
+            <div class="tile-title">Карты</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🛒</div>
+            <div class="tile-title">Магазин</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📰</div>
+            <div class="tile-title">Новости</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">☁️</div>
+            <div class="tile-title">OneDrive</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">👥</div>
+            <div class="tile-title">Люди</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📅</div>
+            <div class="tile-title">Календарь</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">💬</div>
+            <div class="tile-title">Сообщения</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📞</div>
+            <div class="tile-title">Skype</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🎮</div>
+            <div class="tile-title">Игры</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📝</div>
+            <div class="tile-title">OneNote</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📊</div>
+            <div class="tile-title">Excel</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📄</div>
+            <div class="tile-title">Word</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📋</div>
+            <div class="tile-title">PowerPoint</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🖥️</div>
+            <div class="tile-title">Рабочий стол</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">⚙️</div>
+            <div class="tile-title">Параметры</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🔍</div>
+            <div class="tile-title">Поиск</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📂</div>
+            <div class="tile-title">Проводник</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🖨️</div>
+            <div class="tile-title">Печать</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🎨</div>
+            <div class="tile-title">Paint</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🧮</div>
+            <div class="tile-title">Калькулятор</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📹</div>
+            <div class="tile-title">Кино и ТВ</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">📚</div>
+            <div class="tile-title">Книги</div>
+        </div>
+        <div class="tile">
+            <div class="tile-icon">🎙️</div>
+            <div class="tile-title">Диктофон</div>
+        </div>
+    </div>
+    
+    <div class="taskbar">
+        <button class="start-button">Пуск</button>
+        <a href="index.html"><button class="start-button">Вернуться на сайт</button></a>
+        <div class="time" id="time">12:30</div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('ru-RU', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            document.getElementById('time').textContent = timeString;
+        }
+        
+        setInterval(updateTime, 1000);
+        updateTime();
+        
+        document.querySelectorAll('.tile').forEach(tile => {
+            tile.addEventListener('click', function() {
+                const appName = this.querySelector('.tile-title').textContent;
+                alert(`Запуск приложения: ${appName}`);
+            });
+        });
+        
+        document.querySelector('.start-button').addEventListener('click', function() {
+            alert('Меню "Пуск" уже открыто!');
+        });
+    </script>
+</body>
+</html>
